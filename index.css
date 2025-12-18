@@ -1,11 +1,22 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap');
 
 :root {
-    --navy: #001f61;
-    --teal: #257e93;
-    --cyan: #1fbcd2;
-    --white: #ffffff;
-    --bg-light: #f8fafc;
+    --navy: #001F61;
+    --navy-deep: #000D2B;
+    --teal: #1FBCD2;
+    --teal-bright: #00E5FF;
+    --cyan: #30D5C8;
+    --cyan-glow: rgba(48, 213, 200, 0.4);
+    --white: #FFFFFF;
+    --off-white: #F8FAFC;
+    --glass: rgba(255, 255, 255, 0.85);
+
+    /* Vibrant gradients */
+    --gradient-primary: linear-gradient(135deg, var(--navy) 0%, var(--teal) 50%, var(--cyan) 100%);
+    --gradient-mesh: radial-gradient(at 0% 0%, rgba(31, 188, 210, 0.15) 0px, transparent 50%),
+        radial-gradient(at 100% 0%, rgba(0, 31, 97, 0.1) 0px, transparent 50%),
+        radial-gradient(at 100% 100%, rgba(48, 213, 200, 0.15) 0px, transparent 50%),
+        radial-gradient(at 0% 100%, rgba(31, 188, 210, 0.1) 0px, transparent 50%);
     --text-dark: #1e293b;
     --transition-slow: 1.2s cubic-bezier(0.65, 0, 0.35, 1);
     --shadow-premium: 0 20px 40px rgba(0, 0, 0, 0.08);
@@ -104,11 +115,23 @@ body {
 }
 
 #hero-module {
-    background-color: var(--white);
+    background: var(--off-white);
+    background-image: var(--gradient-mesh);
+    animation: meshFlow 20s infinite alternate ease-in-out;
     z-index: 10;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
     border-bottom: 2px solid rgba(0, 31, 97, 0.05);
     position: relative;
+}
+
+@keyframes meshFlow {
+    0% {
+        background-position: 0% 0%;
+    }
+
+    100% {
+        background-position: 100% 100%;
+    }
 }
 
 .hero-content {
@@ -117,11 +140,17 @@ body {
 }
 
 .hero-title {
-    font-size: clamp(2rem, 8vw, 5rem);
-    font-weight: 700;
-    color: var(--navy);
-    text-transform: uppercase;
-    letter-spacing: -1px;
+    font-size: 5rem;
+    font-weight: 800;
+    background: var(--gradient-primary);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0 10px 20px rgba(0, 31, 97, 0.1);
+    letter-spacing: -2px;
+    margin-bottom: 2rem;
+    z-index: 10;
+    position: relative;
 }
 
 /* Figures / Overlapping shapes */
@@ -160,7 +189,9 @@ body {
 
 /* Doctors Module (Horizontal Alternating Slider) */
 #doctors-module {
-    background-color: var(--white);
+    background: var(--off-white);
+    background-image: var(--gradient-mesh);
+    animation: meshFlow 25s infinite alternate ease-in-out;
     padding: 0;
     overflow: hidden;
     height: 100vh;
@@ -179,6 +210,7 @@ body {
 }
 
 .doctor-slide {
+    flex: 0 0 100vw;
     width: 100vw;
     height: 100vh;
     display: flex;
@@ -187,14 +219,53 @@ body {
     flex-shrink: 0;
     padding: 2rem 8vw;
     position: relative;
+    overflow: hidden;
+}
+
+.bg-blob {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px);
+    opacity: 0.15;
+    z-index: 1;
+    animation: blobFloat 15s infinite alternate ease-in-out;
+}
+
+.bg-blob-1 {
+    width: 600px;
+    height: 600px;
+    background: var(--teal);
+    top: -10%;
+    right: -10%;
+}
+
+.bg-blob-2 {
+    width: 500px;
+    height: 500px;
+    background: var(--cyan);
+    bottom: -5%;
+    left: -5%;
+    animation-delay: -5s;
+}
+
+@keyframes blobFloat {
+    0% {
+        transform: translate(0, 0) scale(1);
+    }
+
+    100% {
+        transform: translate(50px, 30px) scale(1.1);
+    }
 }
 
 .doctor-slide-inner {
+    width: 90%;
+    max-width: 1200px;
     display: flex;
     align-items: center;
-    gap: 6rem;
-    max-width: 1300px;
-    width: 100%;
+    gap: 4rem;
+    position: relative;
+    z-index: 2;
 }
 
 /* Alternating directions for symmetry */
@@ -391,22 +462,21 @@ body {
 }
 
 .service-card {
-    background: rgba(255, 255, 255, 0.7);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    border: 1px solid rgba(255, 255, 255, 0.3);
-    border-radius: 24px;
+    background: rgba(255, 255, 255, 0.75);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    border-radius: 32px;
     padding: 3rem 2rem;
     width: 320px;
-    height: 400px;
-    /* Fixed height for consistency */
+    height: 420px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     text-align: center;
-    box-shadow: 0 8px 32px rgba(0, 31, 97, 0.05);
-    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    box-shadow: 0 8px 32px rgba(0, 31, 97, 0.05), inset 0 0 0 1px rgba(255, 255, 255, 0.4);
+    transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
     opacity: 0;
     transform: translateY(30px);
     position: relative;
