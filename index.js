@@ -42,6 +42,9 @@ window.addEventListener('load', () => {
     }
 
     function animateStar(star) {
+        const logoColors = ['#001F61', '#1FBCD2', '#30D5C8', '#00E5FF'];
+        const randomColor = logoColors[Math.floor(Math.random() * logoColors.length)];
+
         const startX = Math.random() * window.innerWidth;
         const startY = Math.random() * -200;
         const duration = 2 + Math.random() * 3;
@@ -51,19 +54,30 @@ window.addEventListener('load', () => {
             x: startX,
             y: startY,
             opacity: 0,
-            scale: 0.1 + Math.random() * 0.2,
-            rotation: Math.random() * 360
+            scale: 0.15 + Math.random() * 0.25,
+            rotation: Math.random() * 360,
+            filter: `drop-shadow(0 0 10px ${randomColor})` // Colorized glow
         });
 
-        gsap.to(star, {
-            x: startX - 400,
-            y: window.innerHeight + 100,
-            opacity: 0.1, // Very low opacity as requested
-            duration: duration,
+        const tl = gsap.timeline({
             delay: delay,
-            ease: "none",
-            onComplete: () => animateStar(star) // Loop
+            onComplete: () => animateStar(star)
         });
+
+        tl.to(star, {
+            opacity: 0.3,
+            duration: 0.5
+        })
+            .to(star, {
+                x: startX - 500,
+                y: window.innerHeight + 100,
+                duration: duration,
+                ease: "power1.inOut"
+            }, 0)
+            .to(star, {
+                opacity: 0,
+                duration: 0.5
+            }, "-=0.5");
     }
 
     // 2. Scroll Animation for Hero Module (Enhanced Transitions)
