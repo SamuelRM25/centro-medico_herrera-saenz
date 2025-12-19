@@ -4,10 +4,916 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Centro Médico Herrera Saenz</title>
-    <link rel="stylesheet" href="index.css">
-</head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
+    <!-- SEO Meta Tags -->
+    <title>Centro Médico Herrera Saenz | Atención Médica Premium 24/7</title>
+    <meta name="description"
+        content="Centro médico de excelencia con especialistas de primer nivel. Servicios de consulta, laboratorio, ultrasonido y emergencias disponibles 24/7.">
+    <meta name="keywords"
+        content="centro médico, hospital, médicos especialistas, atención 24/7, laboratorio, ultrasonido, emergencias">
+    <meta name="author" content="Centro Médico Herrera Saenz">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://herrerasaenz.com/">
+    <meta property="og:title" content="Centro Médico Herrera Saenz | Atención Premium 24/7">
+    <meta property="og:description"
+        content="Centro médico de excelencia con especialistas de primer nivel y servicios completos de atención médica.">
+    <meta property="og:image" content="logo centro medico Herrera saenz.png">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://herrerasaenz.com/">
+    <meta property="twitter:title" content="Centro Médico Herrera Saenz | Atención Premium 24/7">
+    <meta property="twitter:description"
+        content="Centro médico de excelencia con especialistas de primer nivel y servicios completos de atención médica.">
+    <meta property="twitter:image" content="logo centro medico Herrera saenz.png">
+
+    <!-- Modern Libraries -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/core-js/3.32.0/minified.js"></script>
+
+    <!-- GSAP -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="index.css">
+
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "MedicalClinic",
+        "name": "Centro Médico Herrera Saenz",
+        "description": "Centro médico de excelencia con especialistas de primer nivel",
+        "url": "https://herrerasaenz.com",
+        "telephone": "+502-0000-0000",
+        "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "GT"
+        }
+    }
+    </script>
+    <style>
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap');
+
+:root {
+    --navy: #001F61;
+    --navy-deep: #000D2B;
+    --teal: #1FBCD2;
+    --teal-bright: #00E5FF;
+    --cyan: #30D5C8;
+    --cyan-glow: rgba(48, 213, 200, 0.4);
+    --white: #FFFFFF;
+    --off-white: #F8FAFC;
+    --glass: rgba(255, 255, 255, 0.85);
+
+    /* Vibrant gradients */
+    --gradient-primary: linear-gradient(135deg, var(--navy) 0%, var(--teal) 50%, var(--cyan) 100%);
+    --gradient-mesh: radial-gradient(at 0% 0%, rgba(31, 188, 210, 0.15) 0px, transparent 50%),
+        radial-gradient(at 100% 0%, rgba(0, 31, 97, 0.1) 0px, transparent 50%),
+        radial-gradient(at 100% 100%, rgba(48, 213, 200, 0.15) 0px, transparent 50%),
+        radial-gradient(at 0% 100%, rgba(31, 188, 210, 0.1) 0px, transparent 50%);
+    --text-dark: #1e293b;
+    --transition-slow: 1.2s cubic-bezier(0.65, 0, 0.35, 1);
+    --shadow-premium: 0 20px 40px rgba(0, 0, 0, 0.08);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    background-color: var(--white);
+    color: var(--text-dark);
+    overflow-x: hidden;
+    line-height: 1.6;
+}
+
+/* Splash Screen */
+#splash-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: linear-gradient(135deg, var(--navy) 0%, var(--teal) 50%, var(--cyan) 100%);
+    background-size: 200% 200%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    animation: gradientShift 4s ease-in-out infinite;
+}
+
+@keyframes gradientShift {
+
+    0%,
+    100% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+}
+
+#splash-logo {
+    width: 80vw;
+    max-width: 1000px;
+    min-width: 400px;
+    opacity: 0;
+    animation: logoEntrance 2s ease-out forwards, logoPulse 3s ease-in-out 2s infinite;
+    filter: drop-shadow(0 20px 60px rgba(255, 255, 255, 0.3));
+}
+
+@keyframes logoEntrance {
+    0% {
+        opacity: 0;
+        transform: scale(0.5) rotate(-5deg);
+    }
+
+    60% {
+        opacity: 1;
+        transform: scale(1.05) rotate(2deg);
+    }
+
+    100% {
+        opacity: 1;
+        transform: scale(1) rotate(0deg);
+    }
+}
+
+@keyframes logoPulse {
+
+    0%,
+    100% {
+        transform: scale(1);
+        filter: drop-shadow(0 20px 60px rgba(255, 255, 255, 0.3));
+    }
+
+    50% {
+        transform: scale(1.03);
+        filter: drop-shadow(0 25px 80px rgba(48, 213, 200, 0.6));
+    }
+}
+
+
+/* Modules Container */
+.module-container {
+    width: 100%;
+}
+
+.module {
+    position: relative;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.full-height {
+    height: 100vh;
+}
+
+.half-height {
+    height: auto;
+    min-height: 50vh;
+    padding: 4rem 1rem;
+}
+
+/* Hero Section Enhancements */
+#hero-bg-logo {
+    position: absolute;
+    width: 60%;
+    max-width: 800px;
+    opacity: 0.03;
+    /* Very low opacity for subtle branding */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    z-index: 1;
+}
+
+#shooting-stars-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    pointer-events: none;
+    z-index: 2;
+}
+
+.shooting-star {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    opacity: 0;
+    pointer-events: none;
+}
+
+#hero-module {
+    background: var(--off-white);
+    background-image: var(--gradient-mesh);
+    animation: meshFlow 20s infinite alternate ease-in-out;
+    z-index: 10;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    border-bottom: 2px solid rgba(0, 31, 97, 0.05);
+    position: relative;
+}
+
+@keyframes meshFlow {
+    0% {
+        background-position: 0% 0%;
+    }
+
+    100% {
+        background-position: 100% 100%;
+    }
+}
+
+.hero-content {
+    text-align: center;
+    z-index: 20;
+}
+
+.hero-title {
+    font-size: 5rem;
+    font-weight: 800;
+    background: var(--gradient-primary);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0 10px 20px rgba(0, 31, 97, 0.1);
+    letter-spacing: -2px;
+    margin-bottom: 2rem;
+    z-index: 10;
+    position: relative;
+}
+
+/* Figures / Overlapping shapes */
+.shape-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.shape {
+    position: absolute;
+    background-color: var(--cyan);
+    border-radius: 50%;
+    transform: scale(0);
+    opacity: 0.2;
+}
+
+.fade-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--navy);
+    opacity: 0;
+    z-index: 15;
+    pointer-events: none;
+}
+
+/* Doctors Module (Horizontal Alternating Slider) */
+#doctors-module {
+    background: var(--off-white);
+    background-image: var(--gradient-mesh);
+    animation: meshFlow 25s infinite alternate ease-in-out;
+    padding: 0;
+    overflow: hidden;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    z-index: 50;
+    /* Significantly higher z-index to avoid overlap */
+}
+
+#doctors-horizontal-container {
+    display: flex;
+    height: 100%;
+    width: max-content;
+    /* Dynamic width for all slides */
+}
+
+.doctor-slide {
+    flex: 0 0 100vw;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    padding: 2rem 8vw;
+    position: relative;
+    overflow: hidden;
+}
+
+.bg-blob {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px);
+    opacity: 0.15;
+    z-index: 1;
+    animation: blobFloat 15s infinite alternate ease-in-out;
+}
+
+.bg-blob-1 {
+    width: 600px;
+    height: 600px;
+    background: var(--teal);
+    top: -10%;
+    right: -10%;
+}
+
+.bg-blob-2 {
+    width: 500px;
+    height: 500px;
+    background: var(--cyan);
+    bottom: -5%;
+    left: -5%;
+    animation-delay: -5s;
+}
+
+@keyframes blobFloat {
+    0% {
+        transform: translate(0, 0) scale(1);
+    }
+
+    100% {
+        transform: translate(50px, 30px) scale(1.1);
+    }
+}
+
+.doctor-slide-inner {
+    width: 90%;
+    max-width: 1200px;
+    display: flex;
+    align-items: center;
+    gap: 4rem;
+    position: relative;
+    z-index: 2;
+}
+
+/* Alternating directions for symmetry */
+.doctor-slide:nth-child(odd) .doctor-slide-inner {
+    flex-direction: row;
+    /* Info Left, Photo Right */
+}
+
+.doctor-slide:nth-child(even) .doctor-slide-inner {
+    flex-direction: row-reverse;
+    /* Photo Left, Info Right */
+}
+
+.doctor-image-container {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    position: relative;
+}
+
+.doctor-photo-large {
+    width: 100%;
+    max-width: 450px;
+    aspect-ratio: 1/1;
+    background-color: #f1f5f9;
+    border-radius: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #94a3b8;
+    font-size: 1.5rem;
+    border: 10px solid var(--white);
+    box-shadow: 0 30px 60px rgba(0, 31, 97, 0.1);
+    position: relative;
+    z-index: 2;
+}
+
+.doctor-image-container::after {
+    content: '';
+    position: absolute;
+    top: 20%;
+    left: 20%;
+    width: 100%;
+    height: 100%;
+    border: 2px solid var(--cyan);
+    border-radius: 40px;
+    z-index: 1;
+}
+
+.doctor-info-container {
+    flex: 1.2;
+    z-index: 3;
+}
+
+.doctor-slide:nth-child(odd) .doctor-info-container {
+    text-align: left;
+}
+
+.doctor-slide:nth-child(even) .doctor-info-container {
+    text-align: left;
+    /* Keep text left aligned for readability, or right if preferred */
+}
+
+.doctor-specialty-tag {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--cyan);
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    margin-bottom: 1rem;
+    display: block;
+}
+
+.doctor-name-large {
+    font-size: clamp(2.5rem, 6vw, 4.5rem);
+    font-weight: 700;
+    color: var(--navy);
+    line-height: 1.1;
+    margin-bottom: 2rem;
+}
+
+.doctor-description-large {
+    font-size: 1.2rem;
+    color: var(--text-dark);
+    line-height: 1.9;
+    opacity: 0.85;
+    max-width: 600px;
+}
+
+/* Modal Styles */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 31, 97, 0.85);
+    backdrop-filter: blur(8px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10000;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.4s ease;
+}
+
+.modal-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.modal-content {
+    background: var(--white);
+    width: 90%;
+    max-width: 600px;
+    border-radius: 30px;
+    padding: 3rem;
+    position: relative;
+    transform: translateY(30px);
+    transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+    box-shadow: 0 50px 100px rgba(0, 0, 0, 0.3);
+}
+
+.modal-overlay.active .modal-content {
+    transform: translateY(0);
+}
+
+.modal-close {
+    position: absolute;
+    top: 1.5rem;
+    right: 1.5rem;
+    background: #f1f5f9;
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.2rem;
+    color: var(--navy);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: background 0.2s ease;
+}
+
+.modal-close:hover {
+    background: #e2e8f0;
+}
+
+.modal-body {
+    text-align: center;
+}
+
+.modal-info-title {
+    color: var(--navy);
+    margin: 1.5rem 0 1rem;
+    font-size: 1.8rem;
+}
+
+.modal-info-text {
+    color: var(--text-dark);
+    font-size: 1.1rem;
+    line-height: 1.8;
+}
+
+/* Services Module (Glassmorphism & Symmetry) */
+#services-module {
+    background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+    padding: 8rem 2rem;
+    position: relative;
+    overflow: hidden;
+}
+
+#services-module::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(31, 188, 210, 0.05) 0%, transparent 70%);
+    pointer-events: none;
+}
+
+.services-flex {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.service-card {
+    background: rgba(255, 255, 255, 0.75);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    border-radius: 32px;
+    padding: 3rem 2rem;
+    width: 320px;
+    height: 420px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    box-shadow: 0 8px 32px rgba(0, 31, 97, 0.05), inset 0 0 0 1px rgba(255, 255, 255, 0.4);
+    transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+    opacity: 0;
+    transform: translateY(30px);
+    position: relative;
+    overflow: hidden;
+}
+
+.service-hover-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    transition: opacity 0.6s ease, transform 0.8s ease;
+    z-index: 0;
+    filter: brightness(0.3);
+    /* Darken to keep text readable */
+    transform: scale(1.15);
+}
+
+.service-card:hover .service-hover-image {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.service-card:hover {
+    transform: translateY(-12px);
+    box-shadow: 0 20px 48px rgba(31, 188, 210, 0.2);
+    border-color: var(--cyan);
+}
+
+.service-icon-box,
+.service-title,
+.service-desc {
+    position: relative;
+    z-index: 2;
+    transition: color 0.4s ease;
+}
+
+.service-card:hover .service-title {
+    color: var(--white);
+}
+
+.service-card:hover .service-desc {
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.service-icon-box {
+    width: 80px;
+    height: 80px;
+    background: linear-gradient(135deg, var(--cyan) 0%, var(--teal) 100%);
+    border-radius: 20px;
+    margin: 0 auto 1.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 2rem;
+    box-shadow: 0 10px 20px rgba(31, 188, 210, 0.3);
+}
+
+.service-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--navy);
+    margin-bottom: 1rem;
+}
+
+.service-desc {
+    font-size: 0.95rem;
+    color: var(--text-dark);
+    opacity: 0.8;
+    line-height: 1.6;
+}
+
+/* Utilities */
+.bg-navy {
+    background-color: var(--navy);
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .hero-title {
+        font-size: 2.5rem;
+    }
+
+    .doctors-flex {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .modal-content {
+        padding: 2rem;
+    }
+
+    #splash-screen img {
+        width: 350px;
+    }
+}/* =================================
+   PROFESSIONAL REENGINEERING ADDITIONS
+   ================================= */
+
+/* Compact Module Heights */
+.module {
+    min-height: 75vh !important;
+}
+
+.full-height {
+    min-height: 75vh !important;
+}
+
+#doctors-module {
+    min-height: 80vh !important;
+    height: auto !important;
+}
+
+/* Floating Logo Badges */
+.section-header-logo {
+    position: absolute;
+    top: 2rem;
+    right: 2rem;
+    z-index: 100;
+    animation: floatBadge 6s ease-in-out infinite;
+}
+
+.floating-logo-badge {
+    width: 80px;
+    height: auto;
+    opacity: 0.15;
+    filter: drop-shadow(0 5px 15px rgba(0, 31, 97, 0.2));
+    transition: all 0.4s ease;
+}
+
+.floating-logo-badge:hover {
+    opacity: 0.4;
+    transform: scale(1.1) rotate(5deg);
+}
+
+@keyframes floatBadge {
+
+    0%,
+    100% {
+        transform: translateY(0) rotate(0deg);
+    }
+
+    33% {
+        transform: translateY(-10px) rotate(2deg);
+    }
+
+    66% {
+        transform: translateY(-5px) rotate(-2deg);
+    }
+}
+
+/* Professional Footer */
+#main-footer {
+    background: linear-gradient(135deg, var(--navy-deep) 0%, var(--navy) 100%);
+    color: var(--white);
+    padding: 4rem 2rem 2rem;
+    position: relative;
+    overflow: hidden;
+}
+
+#main-footer::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('logo centro medico Herrera saenz.png') center/contain no-repeat;
+    opacity: 0.03;
+    pointer-events: none;
+}
+
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1.5fr 2fr;
+    gap: 4rem;
+    position: relative;
+    z-index: 1;
+}
+
+.footer-logo-section {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.footer-logo {
+    width: 200px;
+    max-width: 100%;
+    animation: logoGlow 4s ease-in-out infinite;
+}
+
+@keyframes logoGlow {
+
+    0%,
+    100% {
+        filter: drop-shadow(0 5px 20px rgba(48, 213, 200, 0.3));
+    }
+
+    50% {
+        filter: drop-shadow(0 8px 30px rgba(31, 188, 210, 0.5));
+    }
+}
+
+.footer-tagline {
+    font-size: 1rem;
+    opacity: 0.8;
+    line-height: 1.6;
+}
+
+.footer-info {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+}
+
+.footer-column h4 {
+    color: var(--teal-bright);
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+.footer-column p {
+    opacity: 0.8;
+    margin: 0.5rem 0;
+    font-size: 0.95rem;
+}
+
+.footer-bottom {
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    text-align: center;
+    opacity: 0.6;
+}
+
+/* Enhanced Animations */
+@keyframes slideInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-50px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideInRight {
+    from {
+        opacity: 0;
+        transform: translateX(50px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.animate-in {
+    animation: fadeInUp 0.8s ease-out forwards;
+}
+
+/* Service Card Enhanced Animations */
+.service-card {
+    animation: none;
+    opacity: 1;
+    transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.service-card.reveal {
+    animation: fadeInUp 0.8s ease-out forwards;
+}
+
+.service-card:hover {
+    transform: translateY(-20px) scale(1.05) rotateY(5deg);
+}
+
+/* Doctor Slide Enhanced */
+.doctor-slide {
+    transition: transform 0.6s ease;
+}
+
+.doctor-name-large {
+    animation: slideInLeft 1s ease-out;
+}
+
+.doctor-description-large {
+    animation: fadeInUp 1s ease-out 0.3s both;
+}
+
+/* Responsive Footer */
+@media (max-width: 768px) {
+    .footer-content {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .footer-info {
+        grid-template-columns: 1fr;
+    }
+
+    .section-header-logo {
+        width: 60px;
+        top: 1rem;
+        right: 1rem;
+    }
+}    </style>
+</head>
 <body>
 
     <!-- Splash Screen -->
@@ -185,13 +1091,36 @@
             </div>
         </section>
 
-        <!-- Final Module -->
-        <section class="module half-height bg-navy"
-            style="flex-direction: column; color: white; padding: 6rem 2rem; text-align: center;">
-            <h2 style="font-size: 2rem; margin-bottom: 1rem;">Centro Médico Herrera Saenz</h2>
-            <p style="opacity: 0.8; max-width: 600px;">Comprometidos con el bienestar y la salud de tu familia a través
-                de atención especializada de primer nivel.</p>
-        </section>
+        <!-- Professional Footer -->
+        <footer id="main-footer">
+            <div class="footer-content">
+                <div class="footer-logo-section">
+                    <img src="logo centro medico Herrera saenz.png" alt="Centro Médico Herrera Saenz"
+                        class="footer-logo">
+                    <p class="footer-tagline">Comprometidos con el bienestar y la salud de tu familia</p>
+                </div>
+                <div class="footer-info">
+                    <div class="footer-column">
+                        <h4>Contacto</h4>
+                        <p>📞 +502 0000-0000</p>
+                        <p>📧 info@herrerasaenz.com</p>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Horarios</h4>
+                        <p>🕐 Atención 24/7</p>
+                        <p>🏥 Emergencias disponibles</p>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Servicios</h4>
+                        <p>Consultas Especializadas</p>
+                        <p>Laboratorio y Ultrasonido</p>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Centro Médico Herrera Saenz. Todos los derechos reservados.</p>
+            </div>
+        </footer>
     </div>
 
     <!-- Modal for Doctor Information -->
@@ -203,11 +1132,388 @@
             </div>
         </div>
     </div>
+    <script>
+// Register ScrollTrigger plugin
+gsap.registerPlugin(ScrollTrigger);
 
-    <!-- GSAP for Animations -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-    <script src="index.js"></script>
+window.addEventListener('load', () => {
+    const splash = document.getElementById('splash-screen');
+    const heroTitle = document.getElementById('hero-title');
+
+    // 1. Splash Screen Fade Out
+    setTimeout(() => {
+        gsap.to(splash, {
+            opacity: 0,
+            duration: 1.5,
+            ease: "power2.inOut",
+            onComplete: () => {
+                splash.style.display = 'none';
+                gsap.from(heroTitle, {
+                    y: 50,
+                    opacity: 0,
+                    duration: 1,
+                    ease: "power3.out"
+                });
+                // Initialize shooting stars after splash
+                createShootingStars();
+            }
+        });
+    }, 1500);
+
+    // Function for Shooting Stars Effect
+    function createShootingStars() {
+        const container = document.getElementById('shooting-stars-container');
+        if (!container) return;
+
+        const starCount = 12;
+        for (let i = 0; i < starCount; i++) {
+            const star = document.createElement('img');
+            star.src = 'logo centro medico Herrera saenz.png';
+            star.className = 'shooting-star';
+            container.appendChild(star);
+
+            animateStar(star);
+        }
+    }
+
+    function animateStar(star) {
+        const logoColors = ['#001F61', '#1FBCD2', '#30D5C8', '#00E5FF'];
+        const randomColor = logoColors[Math.floor(Math.random() * logoColors.length)];
+
+        const startX = Math.random() * window.innerWidth;
+        const startY = Math.random() * -200;
+        const duration = 2 + Math.random() * 3;
+        const delay = Math.random() * 5;
+
+        gsap.set(star, {
+            x: startX,
+            y: startY,
+            opacity: 0,
+            scale: 0.15 + Math.random() * 0.25,
+            rotation: Math.random() * 360,
+            filter: `drop-shadow(0 0 10px ${randomColor})` // Colorized glow
+        });
+
+        const tl = gsap.timeline({
+            delay: delay,
+            onComplete: () => animateStar(star)
+        });
+
+        tl.to(star, {
+            opacity: 0.3,
+            duration: 0.5
+        })
+            .to(star, {
+                x: startX - 500,
+                y: window.innerHeight + 100,
+                duration: duration,
+                ease: "power1.inOut"
+            }, 0)
+            .to(star, {
+                opacity: 0,
+                duration: 0.5
+            }, "-=0.5");
+    }
+
+    // 2. Scroll Animation for Hero Module (Enhanced Transitions)
+    const heroTl = gsap.timeline({
+        scrollTrigger: {
+            trigger: "#hero-module",
+            start: "top top",
+            end: "+=120%",
+            pin: true,
+            scrub: 1,
+        }
+    });
+
+    heroTl
+        .to("#hero-title", {
+            scale: 0.1,
+            opacity: 0,
+            filter: "blur(10px)",
+            duration: 1,
+            ease: "power1.inOut"
+        })
+        .to(".shape", {
+            scale: 8,
+            opacity: 1,
+            stagger: 0.1,
+            duration: 1.5,
+            ease: "power1.in"
+        }, "-=0.5")
+        .to("#hero-fade-overlay", {
+            opacity: 1,
+            duration: 0.5
+        }, "-=0.2");
+
+    // 3. Horizontal Scroll for Doctors Module (Alternating Slider)
+    const doctorsContainer = document.querySelector("#doctors-horizontal-container");
+    const drSlides = gsap.utils.toArray(".doctor-slide");
+
+    if (doctorsContainer && drSlides.length > 0) {
+        gsap.to(doctorsContainer, {
+            x: () => -(doctorsContainer.scrollWidth - window.innerWidth),
+            ease: "none",
+            scrollTrigger: {
+                trigger: "#doctors-module",
+                pin: true,
+                scrub: 1,
+                start: "top top", // Ensure it starts exactly at the top
+                end: () => "+=" + (doctorsContainer.scrollWidth - window.innerWidth),
+                invalidateOnRefresh: true,
+                snap: {
+                    snapTo: 1 / (drSlides.length - 1),
+                    duration: 0.6,
+                    delay: 0.1,
+                    ease: "power1.inOut"
+                },
+                onRefresh: (self) => {
+                    // Force positioning on refresh to avoid skipping first slides
+                    if (self.progress === 0) {
+                        gsap.set(doctorsContainer, { x: 0 });
+                    }
+                }
+            }
+        });
+
+        // Ensure everything is calculated correctly after a slight delay
+        setTimeout(() => ScrollTrigger.refresh(), 500);
+    }
+
+    // 4. Scroll Reveal for Services Module
+    gsap.to(".service-card", {
+        opacity: 1,
+        y: 0,
+        stagger: 0.15,
+        duration: 0.8,
+        ease: "power2.out",
+        scrollTrigger: {
+            trigger: "#services-module",
+            start: "top 75%",
+            toggleActions: "play none none none"
+        }
+    });
+});
+// ===================================
+// PROFESSIONAL REENGINEERING ADDITIONS
+// ===================================
+
+// Intersection Observer for Scroll-Based Animations
+function initScrollAnimations() {
+    const observerOptions = {
+        threshold: 0.2,
+        rootMargin: '0px 0px -100px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('reveal');
+                entry.target.style.opacity = '1';
+                entry.target.style.transform = 'translateY(0)';
+            }
+        });
+    }, observerOptions);
+
+    // Observe service cards
+    const serviceCards = document.querySelectorAll('.service-card');
+    serviceCards.forEach((card, index) => {
+        card.style.opacity = '0';
+        card.style.transform = 'translateY(30px)';
+        card.style.transitionDelay = `${index * 0.1}s`;
+        observer.observe(card);
+    });
+
+    // Observe doctor info sections
+    const doctorSlides = document.querySelectorAll('.doctor-slide');
+    doctorSlides.forEach(slide => {
+        observer.observe(slide);
+    });
+}
+
+// Parallax Logo Effects
+function initParallaxLogos() {
+    const floatingLogos = document.querySelectorAll('.floating-logo-badge');
+
+    window.addEventListener('scroll', () => {
+        const scrolled = window.pageYOffset;
+
+        floatingLogos.forEach((logo, index) => {
+            const speed = 0.5 + (index * 0.1);
+            const yPos = -(scrolled * speed);
+            logo.style.transform = `translateY(${yPos}px) rotate(${scrolled * 0.02}deg)`;
+        });
+    });
+}
+
+// Mouse Tracking Hero Effect  
+function initMouseTracking() {
+    const hero = document.querySelector('#hero-module');
+    if (!hero) return;
+
+    hero.addEventListener('mousemove', (e) => {
+        const { clientX, clientY } = e;
+        const { offsetWidth, offsetHeight } = hero;
+
+        const xPos = (clientX / offsetWidth - 0.5) * 20;
+        const yPos = (clientY / offsetHeight - 0.5) * 20;
+
+        const title = hero.querySelector('.hero-title');
+        if (title) {
+            title.style.transform = `translate(${xPos}px, ${yPos}px)`;
+        }
+    });
+}
+
+// Enhanced Service Card Animations
+function initServiceAnimations() {
+    const serviceCards = document.querySelectorAll('.service-card');
+
+    serviceCards.forEach(card => {
+        card.addEventListener('mouseenter', function () {
+            gsap.to(this, {
+                scale: 1.08,
+                rotationY: 5,
+                duration: 0.4,
+                ease: 'power2.out'
+            });
+
+            const icon = this.querySelector('.service-icon-box');
+            if (icon) {
+                gsap.to(icon, {
+                    scale: 1.2,
+                    rotation: 360,
+                    duration: 0.6,
+                    ease: 'back.out(1.7)'
+                });
+            }
+        });
+
+        card.addEventListener('mouseleave', function () {
+            gsap.to(this, {
+                scale: 1,
+                rotationY: 0,
+                duration: 0.4,
+                ease: 'power2.inOut'
+            });
+
+            const icon = this.querySelector('.service-icon-box');
+            if (icon) {
+                gsap.to(icon, {
+                    scale: 1,
+                    rotation: 0,
+                    duration: 0.4,
+                    ease: 'power2.inOut'
+                });
+            }
+        });
+    });
+}
+
+// Floating Logo Badge Click Animations
+function initLogoBadgeInteractions() {
+    const badges = document.querySelectorAll('.floating-logo-badge');
+
+    badges.forEach(badge => {
+        badge.addEventListener('click', function () {
+            gsap.timeline()
+                .to(this, {
+                    scale: 0.8,
+                    duration: 0.1
+                })
+                .to(this, {
+                    scale: 1.3,
+                    rotation: 360,
+                    duration: 0.6,
+                    ease: 'elastic.out(1, 0.3)'
+                })
+                .to(this, {
+                    scale: 1,
+                    duration: 0.3
+                });
+        });
+    });
+}
+
+// Modernizr Feature Detection with Fallbacks
+function initModernizrFallbacks() {
+    if (typeof Modernizr !== 'undefined') {
+        // Check for CSS transforms
+        if (!Modernizr.csstransforms) {
+            console.warn('CSS Transforms not supported - applying fallbacks');
+            document.body.classList.add('no-transforms');
+        }
+
+        // Check for CSS animations
+        if (!Modernizr.cssanimations) {
+            console.warn('CSS Animations not supported - applying fallbacks');
+            document.body.classList.add('no-animations');
+        }
+
+        // Check for flexbox
+        if (!Modernizr.flexbox) {
+            console.warn('Flexbox not supported - applying fallbacks');
+            document.body.classList.add('no-flexbox');
+        }
+    }
+}
+
+// Smooth Scroll Enhancement
+function initSmoothScroll() {
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                target.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+        });
+    });
+}
+
+// Footer Logo Pulse on Scroll
+function initFooterAnimations() {
+    const footer = document.querySelector('#main-footer');
+    const footerLogo = document.querySelector('.footer-logo');
+
+    if (!footer || !footerLogo) return;
+
+    gsap.to(footerLogo, {
+        scrollTrigger: {
+            trigger: footer,
+            start: 'top bottom',
+            end: 'top center',
+            scrub: 1
+        },
+        scale: 1.1,
+        rotation: 5,
+        ease: 'none'
+    });
+}
+
+// Initialize All Professional Features
+window.addEventListener('DOMContentLoaded', () => {
+    // Small delay to ensure DOM is fully loaded
+    setTimeout(() => {
+        initScrollAnimations();
+        initParallaxLogos();
+        initMouseTracking();
+        initServiceAnimations();
+        initLogoBadgeInteractions();
+        initModernizrFallbacks();
+        initSmoothScroll();
+        initFooterAnimations();
+    }, 100);
+});
+
+// Add responsive logo sizing
+window.addEventListener('resize', () => {
+    ScrollTrigger.refresh();
+});
+    </script>
 </body>
 
 </html>
