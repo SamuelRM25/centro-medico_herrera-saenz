@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es" class="scroll-smooth">
+<html lang="es">
 
 <head>
     <meta charset="UTF-8">
@@ -126,16 +126,44 @@
             mix-blend-mode: overlay;
             opacity: 0.05;
         }
+
+        .logo-neon {
+            filter: drop-shadow(0 0 12px rgba(20, 184, 166, 0.9)) drop-shadow(0 0 25px rgba(20, 184, 166, 0.5));
+            opacity: 0.8;
+            transition: all 0.5s ease;
+        }
+
+        .logo-neon-blue {
+            filter: drop-shadow(0 0 12px rgba(14, 165, 233, 0.9)) drop-shadow(0 0 25px rgba(14, 165, 233, 0.5));
+            opacity: 0.8;
+            transition: all 0.5s ease;
+        }
+
+        .logo-neon:hover,
+        .logo-neon-blue:hover {
+            filter: drop-shadow(0 0 18px rgba(20, 184, 166, 1)) drop-shadow(0 0 35px rgba(20, 184, 166, 0.7));
+            opacity: 1;
+            transform: scale(1.05);
+        }
+
+        /* Swiper Focus Effect */
+        .doctorSwiper .swiper-slide {
+            transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+            filter: blur(8px) brightness(0.5);
+            transform: scale(0.9);
+            opacity: 0.5;
+        }
+
+        .doctorSwiper .swiper-slide-active {
+            filter: blur(0) brightness(1);
+            transform: scale(1.15);
+            opacity: 1;
+            z-index: 10;
+        }
     </style>
 </head>
 
 <body class="antialiased text-slate-100 bg-white dark:bg-medical-deep">
-    <!-- Background Watermark -->
-    <div class="fixed inset-0 z-0 pointer-events-none flex items-center justify-center opacity-[0.05]">
-        <img src="Logotipo.png" class="w-[80vw] md:w-[40vw] object-contain grayscale" alt="Watermark">
-    </div>
-
-
     <!-- Navigation -->
     <nav class="fixed w-full z-50 bg-white/80 dark:bg-slate-950/80 backdrop-blur-md border-b border-slate-200 dark:border-slate-800 transition-all duration-300"
         id="navbar">
@@ -226,7 +254,6 @@
         <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-16 items-center">
             <div class="relative reveal-left">
                 <div class="absolute -top-10 -left-10 w-40 h-40 bg-teal-400/20 rounded-full blur-3xl"></div>
-                <!-- Using Logo as graphical element since no other images provided yet -->
                 <div
                     class="bg-slate-100 dark:bg-slate-900 p-8 rounded-2xl shadow-xl relative z-10 border border-slate-800">
                     <img src="Logotipo.png" alt="About Image" class="w-full h-auto object-contain rounded-lg">
@@ -277,9 +304,15 @@
     <!-- Services Grid -->
 
     <!-- Services Section (Zig-Zag) -->
-    <section id="services" class="py-24 relative overflow-hidden bg-slate-100 dark:bg-slate-900">
-        <div class="absolute inset-0 services-bg-overlay pointer-events-none"></div>
-        <div class="max-w-7xl mx-auto px-6">
+    <section id="services" class="py-24 relative overflow-hidden bg-white dark:bg-medical-deep">
+        <!-- Giant Neon Logo Background -->
+        <div
+            class="absolute -right-20 top-1/2 -translate-y-1/2 w-[60vw] h-[60vw] max-w-4xl opacity-75 pointer-events-none z-0">
+            <img src="Logo.png" alt="Logo BG" class="w-full h-full object-contain logo-neon filter blur-[2px]">
+        </div>
+
+        <div class="absolute inset-0 services-bg-overlay pointer-events-none opacity-[0.03]"></div>
+        <div class="max-w-7xl mx-auto px-6 relative z-10">
             <div class="text-center max-w-3xl mx-auto mb-20 reveal-up">
                 <h2 class="text-sm font-bold text-teal-500 tracking-wider uppercase mb-2">Nuestros Servicios</h2>
                 <h3 class="text-3xl md:text-4xl font-bold text-slate-900 dark:text-white mb-4">Soluciones Médicas
@@ -611,9 +644,12 @@
                     class="inline-block px-4 py-1.5 rounded-full bg-teal-500/20 border border-teal-500/30 text-teal-300 text-sm font-bold tracking-wide uppercase mb-6 backdrop-blur-sm">
                     Contacto
                 </div>
-                <h3 class="text-5xl font-bold mb-10 text-slate-900 dark:text-white leading-tight">Estamos Cerca <br>
-                    <span class="text-teal-400">De Ti</span>
-                </h3>
+                <div class="flex items-center gap-4 mb-10">
+                    <img src="Logo.png" alt="Logo Neon" class="h-12 w-auto logo-neon">
+                    <h3 class="text-5xl font-bold text-slate-900 dark:text-white leading-tight">Estamos Cerca <br>
+                        <span class="text-teal-400">De Ti</span>
+                    </h3>
+                </div>
 
                 <div class="space-y-10">
                     <div class="flex items-start gap-6 group">
@@ -679,7 +715,7 @@
                 <div
                     class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-full pointer-events-none animate-bounce">
                     <div
-                        class="w-16 h-16 bg-slate-100 dark:bg-slate-900 rounded-full p-2 shadow-xl border-2 border-teal-500 relative z-10 w-20 h-20 flex items-center justify-center">
+                        class="w-16 h-16 bg-slate-100 dark:bg-slate-900 rounded-full p-2 shadow-xl border-2 border-teal-500 relative z-10 flex items-center justify-center logo-neon">
                         <img src="Logotipo.png" class="max-w-full max-h-full object-contain">
                     </div>
                     <div class="w-4 h-4 bg-teal-500 rotate-45 transform -translate-y-1/2 translate-x-8"></div>
@@ -707,14 +743,12 @@
 
         // 1. Optimized Lenis Configuration (Smoother, less laggy)
         const lenis = new Lenis({
-            duration: 1.0, // Reduced from 1.2
-            easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-            direction: 'vertical',
-            gestureDirection: 'vertical',
-            smooth: true,
-            mouseMultiplier: 0.8, // Reduced sensitivity
-            smoothTouch: false, // Let touch be native if possible or very subtle
-            touchMultiplier: 1.5,
+            lerp: 0.1,
+            wheelMultiplier: 1.0,
+            infinite: false,
+            gestureOrientation: 'vertical',
+            normalizeWheel: true,
+            smoothWheel: true
         });
 
         // Use requestAnimationFrame loop properly
@@ -726,12 +760,13 @@
 
         // 2. Initialize Swiper for Doctors
         const swiper = new Swiper(".doctorSwiper", {
-            slidesPerView: 1,
-            spaceBetween: 30,
+            slidesPerView: 1.2,
+            spaceBetween: 40,
             loop: true,
             autoplay: { delay: 3000, disableOnInteraction: false },
-            centeredSlides: false, // Better for cards alignment
+            centeredSlides: true,
             grabCursor: true,
+            speed: 800, // Smooth transition
             pagination: {
                 el: ".swiper-pagination",
                 clickable: true,
@@ -742,17 +777,13 @@
                 prevEl: ".swiper-button-prev-custom",
             },
             breakpoints: {
-                640: {
-                    slidesPerView: 1.2,
-                    spaceBetween: 20,
-                },
                 768: {
                     slidesPerView: 2,
-                    spaceBetween: 30,
+                    spaceBetween: 80,
                 },
                 1024: {
                     slidesPerView: 3,
-                    spaceBetween: 30,
+                    spaceBetween: 100,
                 },
             },
         });
