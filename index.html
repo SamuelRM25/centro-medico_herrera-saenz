@@ -2,20 +2,20 @@
 <html lang="es">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Centro Médico Herrera Saenz | Excelencia Médica en Huehuetenango</meta>
-    <meta name="description" content="Centro Médico Herrera Saenz, tu clínica de confianza en Huehuetenango. Atención 24/7, especialistas certificados, farmacia, laboratorio y emergencias.">
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Centro Médico Herrera Saenz | Excelencia Médica en Huehuetenango</title>
+    <meta name="description" content="Centro Médico Herrera Saenz, tu clínica de confianza en Huehuetenango. Atención 24/7, especialistas certificados, farmacia, laboratorio y emergencias."/>
     <link rel="icon" href="Logo.png" type="image/png">
 
     <!-- Preload critical resources -->
-    <link rel="preload" as="image" href="Imagenes/hospital.jpg">
-    <link rel="preload" as="image" href="Logotipo.png">
+    <link rel="preload" as="image" href="Imagenes/hospital.jpg"/>
+    <link rel="preload" as="image" href="Logotipo.png"/>
 
     <!-- Fonts — display=swap prevents render blocking -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com"/>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet"/>
 
     <!-- Icons — defer so it doesn't block rendering -->
     <script src="https://unpkg.com/lucide@latest" defer></script>
@@ -41,7 +41,7 @@
     </script>
 
     <!-- Swiper CSS only -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
 
     <style>
         /* =============================================
@@ -143,12 +143,14 @@
            SCROLL REVEAL — CSS-only via Intersection Observer classes
         ============================================= */
         .reveal {
-            opacity: 0;
+            /* Basic setup, but don't hide by default here to avoid blank screens if JS fails */
             transform: translateY(32px);
             transition: opacity 0.65s ease, transform 0.65s ease;
         }
-        .reveal.from-left  { transform: translateX(-40px); }
-        .reveal.from-right { transform: translateX(40px); }
+        /* Only hide if the script is able to run and hasn't revealed it yet */
+        .reveal:not(.visible) {
+            opacity: 0;
+        }
         .reveal.visible {
             opacity: 1;
             transform: translate(0);
@@ -316,6 +318,12 @@
 </head>
 
 <body class="antialiased text-slate-900 bg-slate-50 dark:text-slate-100 dark:bg-medical-deep">
+    <!-- Fallback for file:// protocol or disabled JS -->
+    <noscript>
+        <style>
+            .reveal { opacity: 1 !important; transform: none !important; }
+        </style>
+    </noscript>
 
     <!-- ===== NAVIGATION ===== -->
     <nav id="navbar" class="fixed w-full z-50 transition-all duration-300 bg-white/85 dark:bg-slate-950/85 backdrop-blur-md border-b border-slate-200/70 dark:border-slate-800/70">
@@ -497,7 +505,7 @@
                 <!-- Service 1 -->
                 <div class="grid md:grid-cols-2 gap-12 items-center reveal">
                     <div class="service-img-wrap h-72 shadow-xl">
-                        <img src="Imagenes/atencion24:7.jpg" alt="Atención médica 24/7" class="w-full h-full object-cover" loading="lazy">
+                        <img src="Imagenes/atencion24-7.jpg" alt="Atención médica 24/7" class="w-full h-full object-cover" loading="lazy">
                     </div>
                     <div>
                         <div class="flex items-center gap-3 mb-4">
@@ -912,7 +920,15 @@
             });
         }
 
-        // ── 7. Suppress Tailwind CDN warning ─────────────────────────────────
+        // ── 7. Suppress Tailwind CDN warning & File Check ─────────────────────
+        if (window.location.protocol === 'file:') {
+            console.warn("Working on file:// - Some features like Google Maps or Tailwind might be restricted by the browser.");
+            // Force reveal if we detect we are stuck
+            setTimeout(() => {
+                document.querySelectorAll('.reveal:not(.visible)').forEach(el => el.classList.add('visible'));
+            }, 3000);
+        }
+
         const ow = console.warn;
         console.warn = (...a) => {
             if (typeof a[0] === 'string' && a[0].includes('cdn.tailwindcss.com')) return;
